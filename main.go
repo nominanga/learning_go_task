@@ -1,9 +1,16 @@
 // Package learning_go_task provides basic math utilities.
 package learning_go_task
 
-// Add functions provides functionality of two ints addition
-// for more information visit
+import "golang.org/x/exp/constraints"
+
+// Number is an interface that combines Integer and Float types.
+type Number interface {
+    constraints.Integer | constraints.Float
+}
+
+// Add takes two Number values and returns their sum.
+// For more information on addition, see:
 // https://www.mathsisfun.com/numbers/addition.html
-func Add(val1, val2 int) int {
-	return val1 + val2
+func Add[T Number](a T, b T) T {
+    return a + b
 }
